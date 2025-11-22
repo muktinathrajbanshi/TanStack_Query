@@ -1,5 +1,9 @@
 import React from 'react';
 import { createBrowserRouter } from "react-router-dom";
+import { MainLayout } from './components/Layout/MainLayout';
+import { Home } from './Pages/Home';
+import { FetchOld } from './Pages/FetchOld';
+import { FetchRQ } from './Pages/FetchRQ';
 
 // Creating a Router 
 const router = createBrowserRouter([
@@ -13,11 +17,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/trad",
-        element: <fetchOld />,
+        element: <FetchOld />,
       },
       {
         path: "/rq",
-        element: <fetchRQ />,
+        element: <FetchRQ />,
       },
     ],
   },
