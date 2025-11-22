@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { MainLayout } from './components/Layout/MainLayout';
 import { Home } from './Pages/Home';
 import { FetchOld } from './Pages/FetchOld';
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
 
 
 const App = () => {
-  return <h1>Hello, TanStack Query!!!</h1>
-}
+  return <RouterProvider router={router}></RouterProvider>;
+};
 
 export default App;
