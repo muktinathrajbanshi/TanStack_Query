@@ -16,3 +16,22 @@ input {
   color: #fff;
   list-style: none;
 }
+
+h1 {
+  color: #fff;
+  text-align: center;
+  font-size: 3.4rem;
+  text-decoration: underline;
+  font-family: "syne";
+  letter-spacing: 0.1rem;
+}
+
+button {
+  padding: 0rem 1.2rem;
+  border-radius: 0.3rem;
+  -webkit-border-radius: 0.3rem;
+  -moz-border-radius: 0.3rem;
+  -ms-border-radius: 0.3rem;
+  -o-border-radius: 0.3rem;
+  height: 4rem;
+}
