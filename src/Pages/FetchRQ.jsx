@@ -1,33 +1,29 @@
-import { useEffect } from "react";
+
+import { useQuery } from "@tanstack/react-query";
 import { fetchPosts } from "../API/api";
 
 export const FetchRQ = () => {
 
-
-    const getPostData = async () => {
+    const getPostsData = async () => {
         try {
             const res = await fetchPosts();
-            // console.log(res);
-            res.status === 200 ? setPosts(res.data) : [];
+            res.status === 200 ? res.data : [];
         } catch (error) {
             console.log(error);
             return [];
         }
     };
 
-    useEffect(() => {
-        getPostData();
-    }, [])
 
-    useQuery({
-        queryKey:["posts"], //useState
-        queryFn:getPostData() // useEffect
+    const { data } = useQuery({
+        queryKey: ["posts"], //useState
+        queryFn: getPostsData, // useEffect
     });
 
     return (
         <div>
             <ul className="section-accordion">
-                {posts?.map((curElem) => {
+                {data?.map((curElem) => {
                     const {id, title, body} = curElem;
                     return (
                         <li key={id}>
