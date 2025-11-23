@@ -7,6 +7,7 @@ import { Home } from './Pages/Home';
 import { FetchOld } from './Pages/FetchOld';
 import { FetchRQ } from './Pages/FetchRQ';
 
+import "./App.css";
 // Creating a Router 
 const router = createBrowserRouter([
   {

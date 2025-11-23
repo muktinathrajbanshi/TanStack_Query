@@ -23,7 +23,7 @@ export const FetchOld = () => {
     return (
         <div>
             <ul className="section-accordion">
-                {posts.map((curElem) => {
+                {posts?.map((curElem) => {
                     const {id, title, body} = curElem;
                     return (
                         <li key={id}>
