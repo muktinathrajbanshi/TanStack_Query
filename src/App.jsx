@@ -1,5 +1,7 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { QueryClientProvider } from "@tanstack/react-query";
+
 import { MainLayout } from './components/Layout/MainLayout';
 import { Home } from './Pages/Home';
 import { FetchOld } from './Pages/FetchOld';
@@ -29,7 +31,14 @@ const router = createBrowserRouter([
 
 
 const App = () => {
-  return <RouterProvider router={router}></RouterProvider>;
+
+  const queryClient = new QueryClient();
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router}></RouterProvider>;
+    </QueryClientProvider>
+  );
 };
 
 export default App;
