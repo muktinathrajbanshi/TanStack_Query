@@ -7,7 +7,7 @@ export const FetchRQ = () => {
     const getPostsData = async () => {
         try {
             const res = await fetchPosts();
-            res.status === 200 ? res.data : [];
+           return res.status === 200 ? res.data : [];
         } catch (error) {
             console.log(error);
             return [];
@@ -16,7 +16,7 @@ export const FetchRQ = () => {
 
 
     const { data } = useQuery({
-        queryKey: ["posts"], //useState
+        queryKey: ['posts'], //useState
         queryFn: getPostsData, // useEffect
     });
 
