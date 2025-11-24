@@ -8,7 +8,7 @@ export const FetchRQ = () => {
     });
 
     if (isLoading) return <p>Loading...</p>;
-    if (isError) return <p>Something went wrong!</p>;
+    if (isError) return <p> Error: {error.message || "Something went wrong!"} Something went wrong!</p>;
 
     return (
         <div>
