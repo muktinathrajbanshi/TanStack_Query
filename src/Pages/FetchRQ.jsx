@@ -2,10 +2,13 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchPosts } from "../API/api";
 
 export const FetchRQ = () => {
-    const { data } = useQuery({
+    const { data, isLoading, isError, error } = useQuery({
         queryKey: ['posts'], //useState
         queryFn: fetchPosts, // useEffect
     });
+
+    if (isLoading) return <p>Loading...</p>;
+    if (isError) return <p>Something went wrong!</p>;
 
     return (
         <div>
