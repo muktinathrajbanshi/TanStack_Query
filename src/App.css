@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   background-color: #17202a;
 }
@@ -53,6 +59,45 @@ button:hover {
   background-color: hsl(160, 80%, 48%);
   color: hsl(0, 0%, 100%);
   box-shadow: rgb(9, 172, 115) 0px 7px 19px 0px;
+}
+
+.header-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-section .container {
+  width: 100%;
+  height: 8rem;
+  padding: 0 6rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-section .container a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  text-decoration: none;
+}
+
+.header-section .container a:hover {
+  color: aqua;
+}
+
+.header-section .container ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4.5rem;
+}
+
+.header-section .container ul li a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .section-accordion {

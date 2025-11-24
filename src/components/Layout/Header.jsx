@@ -2,8 +2,8 @@ import { NavLink } from "react-router-dom";
 
 export const Header = () => {
     return (
-        <header>
-            <div>
+        <header className="header-section">
+            <div className="container">
                 <NavLink>MuktiReactQuery</NavLink>
                 <ul>
                     <li>
