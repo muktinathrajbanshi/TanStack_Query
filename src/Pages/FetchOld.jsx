@@ -2,23 +2,31 @@ import { useEffect, useState } from "react";
 import { fetchPosts } from "../API/api";
 
 export const FetchOld = () => {
-
     const [posts, setPosts] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [isError, setIsError] = useState(false);
+
 
     const getPostData = async () => {
         try {
             const res = await fetchPosts();
-            // console.log(res);
-            res.status === 200 ? setPosts(res.data) : [];
+            if(res.status === 200) {
+                setPosts(res.data) ;
+                setIsLoading(false);
+            }
         } catch (error) {
             console.log(error);
-            return [];
+            setIsError(true);
+            setIsLoading(false);
         }
     };
 
     useEffect(() => {
         getPostData();
-    }, [])
+    }, []);
+
+    if (isLoading) return <p>Loading...</p>;
+    if (isError) return <p>Something went wrong!</p>;
 
     return (
         <div>
