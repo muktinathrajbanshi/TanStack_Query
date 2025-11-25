@@ -6,7 +6,9 @@ export const FetchRQ = () => {
         queryKey: ['posts'], //useState
         queryFn: fetchPosts, // useEffect
         // gcTime: 1000,
-        staleTime: 10000,
+        // staleTime: 10000,
+        refetchInterval: 1000,
+        refetchIntervalInBackground: true,
     });
 
     if (isLoading) return <p>Loading...</p>;
