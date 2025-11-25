@@ -18,12 +18,14 @@ export const fetchPosts = async () => {
 };
 
 
-// const getPostsData = async () => {
-//         try {
-//             const res = await fetchPosts();
-//            return res.status === 200 ? res.data : [];
-//         } catch (error) {
-//             console.log(error);
-//             return [];
-//         }
-//     };
+// to fetch the indv. data 
+
+export const fetchInvPost = async (id) => {
+    try {
+       const res = await api.get(`/posts/${id}`);
+       return res.status === 200 ? res.data : [];
+    } catch (error) {
+        console.log(error);
+        
+    }
+}

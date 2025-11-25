@@ -117,6 +117,10 @@ button:hover {
   margin-top: 6.4rem;
 }
 
+.section-accordion a {
+  text-decoration: none;
+}
+
 .section-accordion li {
   background-color: #212f3c;
   padding: 1.6rem;
