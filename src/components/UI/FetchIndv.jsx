@@ -10,8 +10,17 @@ export const FetchIndv = () => {
         queryFn: () => fetchInvPost(id), // useEffect
     });
 
-    console.log(data);
+    if (isLoading) return <p>Loading...</p>;
+    if (isError) return <p> Error: {error.message || "Something went wrong!"} Something went wrong!</p>;
     
 
-    return <h1>Hello {id}</h1>;
+    return (
+        <>
+            <ul className="section-accordion">
+                <li>
+                    <p>ID: {data[0].id}</p>
+                </li>
+            </ul>
+        </>
+    )
 };
