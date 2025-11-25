@@ -5,6 +5,8 @@ export const FetchRQ = () => {
     const { data, isLoading, isError, error } = useQuery({
         queryKey: ['posts'], //useState
         queryFn: fetchPosts, // useEffect
+        // gcTime: 1000,
+        staleTime: 10000,
     });
 
     if (isLoading) return <p>Loading...</p>;
