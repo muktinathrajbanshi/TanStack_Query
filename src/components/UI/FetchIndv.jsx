@@ -15,12 +15,14 @@ export const FetchIndv = () => {
     
 
     return (
-        <>
+        <div>
             <ul className="section-accordion">
                 <li>
-                    <p>ID: {data[0].id}</p>
+                    <p>ID: {data.id}</p>
+                    <p>Title: {data.title}</p>
+                    <p>Body: {data.body}</p>
                 </li>
             </ul>
-        </>
+        </div>
     )
 };
