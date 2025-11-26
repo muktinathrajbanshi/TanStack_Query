@@ -1,4 +1,4 @@
-import { keepPreviousData, useQuery } from "@tanstack/react-query";
+import { keepPreviousData, useMutation, useQuery } from "@tanstack/react-query";
 import { fetchPosts } from "../API/api";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
@@ -13,6 +13,12 @@ export const FetchRQ = () => {
         placeholderData:keepPreviousData,
         
     });
+
+    //! mutation function to delete the post 
+    const deleteMutation = useMutation({
+        mutationFn:(id) => deletePost(id),
+    })
+
 
     if (isLoading) return <p>Loading...</p>;
     if (isError) return <p> Error: {error.message || "Something went wrong!"} Something went wrong!</p>;
@@ -29,7 +35,7 @@ export const FetchRQ = () => {
                             <p>{title}</p>
                             <p>{body}</p>
                          </NavLink>
-                         <button onClick={() => alert(`hi post ${id}`)}>Delete</button>
+                         <button onClick={() => deleteMutation}>Delete</button>
                         </li>
                     );
                 })}

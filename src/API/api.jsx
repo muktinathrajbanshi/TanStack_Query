@@ -19,7 +19,6 @@ export const fetchPosts = async (pageNumber) => {
         
     } catch (error) {
         console.log(error);
-        
     }
 };
 
@@ -35,3 +34,9 @@ export const fetchInvPost = async (id) => {
         
     }
 }
+
+// to delete the post 
+
+export const deletePost = (id) => {
+    return api.delete(`/posts/${id}`);
+};
