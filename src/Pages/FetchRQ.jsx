@@ -8,8 +8,8 @@ export const FetchRQ = () => {
     const [pageNumber, setPageNumber] = useState(0);
 
     const { data, isLoading, isError, error } = useQuery({
-        queryKey: ['posts'], //useState
-        queryFn: fetchPosts(pageNumber), // useEffect 
+        queryKey: ['posts', pageNumber], //useState
+        queryFn: () => fetchPosts(pageNumber), // useEffect 
         
     });
 
@@ -33,9 +33,9 @@ export const FetchRQ = () => {
                 })}
             </ul>
             <div className="pagination-section container">
-                <button>Prev</button>
+                <button onClick={() => setPageNumber((prev) => prev - 1)}>Prev</button>
                 <h2>{pageNumber}</h2>
-                <button>Next</button>
+                <button onClick={() => setPageNumber((prev) => prev + 1)}>Next</button>
             </div>
         </div>
     );
