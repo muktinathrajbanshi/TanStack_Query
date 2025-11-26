@@ -9,11 +9,8 @@ export const FetchRQ = () => {
 
     const { data, isLoading, isError, error } = useQuery({
         queryKey: ['posts'], //useState
-        queryFn: fetchPosts, // useEffect 
-        // gcTime: 1000,
-        // staleTime: 10000,
-        refetchInterval: 1000,
-        refetchIntervalInBackground: true,
+        queryFn: fetchPosts(pageNumber), // useEffect 
+        
     });
 
     if (isLoading) return <p>Loading...</p>;
