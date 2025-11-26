@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { fetchPosts } from "../API/api";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
@@ -10,6 +10,7 @@ export const FetchRQ = () => {
     const { data, isLoading, isError, error } = useQuery({
         queryKey: ['posts', pageNumber], //useState
         queryFn: () => fetchPosts(pageNumber), // useEffect 
+        placeholderData:keepPreviousData,
         
     });
 
@@ -33,7 +34,9 @@ export const FetchRQ = () => {
                 })}
             </ul>
             <div className="pagination-section container">
-                <button onClick={() => setPageNumber((prev) => prev - 3)}>Prev</button>
+                <button 
+                disabled={pageNumber === 0 ? true : false} 
+                onClick={() => setPageNumber((prev) => prev - 3)}>Prev</button>
                 <h2>{(pageNumber / 3) + 1}</h2>
                 <button onClick={() => setPageNumber((prev) => prev + 3)}>Next</button>
             </div>
