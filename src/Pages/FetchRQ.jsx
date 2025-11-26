@@ -35,9 +35,9 @@ export const FetchRQ = () => {
                     );
                 })}
             </ul>
-            <div>
+            <div className="pagination-section container">
                 <button>Prev</button>
-                <h2></h2>
+                <h2>{pageNumber}</h2>
                 <button>Next</button>
             </div>
         </div>
