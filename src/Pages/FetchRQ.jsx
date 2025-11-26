@@ -29,6 +29,7 @@ export const FetchRQ = () => {
                             <p>{title}</p>
                             <p>{body}</p>
                          </NavLink>
+                         <button onClick={() => alert(`hi post ${id}`)}>Delete</button>
                         </li>
                     );
                 })}
