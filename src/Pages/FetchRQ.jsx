@@ -1,11 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchPosts } from "../API/api";
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 
 export const FetchRQ = () => {
+
+    const [pageNumber, setPageNumber] = useState(0);
+
     const { data, isLoading, isError, error } = useQuery({
         queryKey: ['posts'], //useState
-        queryFn: fetchPosts, // useEffect
+        queryFn: fetchPosts, // useEffect 
         // gcTime: 1000,
         // staleTime: 10000,
         refetchInterval: 1000,
@@ -31,6 +35,11 @@ export const FetchRQ = () => {
                     );
                 })}
             </ul>
+            <div>
+                <button>Prev</button>
+                <h2></h2>
+                <button>Next</button>
+            </div>
         </div>
     );
 };
