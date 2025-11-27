@@ -53,6 +53,6 @@ export const fetchUsers = async ({ pageParam = 1 }) => {
         return res.data;
     } catch (error) {
         console.log(error);
-        
+        return [];
     }
 };

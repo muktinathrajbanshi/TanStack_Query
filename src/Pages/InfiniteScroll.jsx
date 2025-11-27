@@ -3,11 +3,12 @@ import { fetchUsers } from "../API/api";
 import { useEffect } from "react";
 
 export const InfiniteScroll = () => {
-   const { data, hasNextPage, fetchNextPage } = useInfiniteQuery({
+   const { data, hasNextPage, fetchNextPage, status, isFetchingNextPage } = useInfiniteQuery({
         queryKey:["users"],
         queryFn:fetchUsers,
         getNextPageParam: (lastPage, allPages) => {
-            console.log("lastPage", lastPage, allPages);
+            // console.log("lastPage", lastPage, allPages);
+            if (!Array.isArray(lastPage)) return undefined;
             return lastPage.length === 10 ? allPages.length + 1 : undefined;
         },
     });
@@ -27,6 +28,9 @@ export const InfiniteScroll = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, [hasNextPage]);
     
+
+    if (status === "loading") return <div>Loading...</div>;
+    if (status === "error") return <div>Error fetching data</div>;
 
     return (
         <div>
@@ -50,6 +54,15 @@ export const InfiniteScroll = () => {
                     ))}
                 </ul>
             ))}
+            {isFetchingNextPage && <div 
+            style={{
+                color: "#fff", 
+                display: "flex",
+                justifyContent: "center", 
+                alignItems: "center", 
+                fontSize: "1.8rem", 
+                marginTop: "1rem"
+                }}>Loading more ...</div>}
         </div>
     )
 }
