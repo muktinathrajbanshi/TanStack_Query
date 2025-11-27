@@ -25,6 +25,16 @@ export const FetchRQ = () => {
         },
     });
 
+    //! mutation function to update the post 
+    const deleteMutation = useMutation({
+        mutationFn:(id) => deletePost(id),
+        onSuccess:(data, id) => {
+            queryClient.setQueryData(['posts', pageNumber], (curElem) => {
+                return curElem?.filter((post) => post.id !== id);
+            });
+        },
+    });
+
 
     if (isLoading) return <p>Loading...</p>;
     if (isError) return <p> Error: {error.message || "Something went wrong!"} Something went wrong!</p>;
