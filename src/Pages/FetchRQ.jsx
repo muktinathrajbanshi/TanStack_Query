@@ -31,11 +31,11 @@ export const FetchRQ = () => {
         onSuccess:(apiData, postId) => {
             console.log(apiData, postId);
             
-            // queryClient.setQueryData(['posts', pageNumber], (postData) => {
-            //     return postData?.map((curPost) => {
-            //         return curPost.id === postId;
-            //     });
-            // });
+            queryClient.setQueryData(['posts', pageNumber], (postData) => {
+                return postData?.map((curPost) => {
+                    return curPost.id === postId ? {... curPost, title:apiData.data.title} : curPost;
+                });
+            });
         },
     });
 
