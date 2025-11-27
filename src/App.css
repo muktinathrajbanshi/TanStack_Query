@@ -146,6 +146,12 @@ button:hover {
   list-style: none;
 }
 
+.section-accordion li .btn-class {
+  display: flex;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
 .section-accordion .active-btn {
   background-color: #e74c3c;
   color: #fff;
