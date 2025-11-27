@@ -24,14 +24,15 @@ export const InfiniteScroll = () => {
     //     }
     // };
 
-   const { ref, inView } useInView({
+   const { ref, inView } = useInView({
     threshold: 1,
    });
 
     useEffect(() => {
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, [hasNextPage]);
+         if(inView && hasNextPage) {
+            fetchNextPage();
+         }
+    }, [inView, fetchNextPage, hasNextPage]);
     
 
     if (status === "loading") return <div>Loading...</div>;
@@ -59,15 +60,24 @@ export const InfiniteScroll = () => {
                     ))}
                 </ul>
             ))}
-            {isFetchingNextPage && <div 
-            style={{
+            
+            <div 
+             ref={ref} 
+             style={{
                 color: "#fff", 
                 display: "flex",
                 justifyContent: "center", 
                 alignItems: "center", 
                 fontSize: "1.8rem", 
                 marginTop: "1rem"
-                }}>Loading more ...</div>}
+                }}
+               >
+                {isFetchingNextPage
+                ? "Loading more ..."
+                : hasNextPage
+                ? "Scroll down to load more"
+                : "No more users"}
+            </div>
         </div>
-    )
-}
+    );
+};
