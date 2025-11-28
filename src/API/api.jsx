@@ -6,10 +6,9 @@ const api = axios.create({
 
 // to fetch the data 
 
-
-// export const fetchPosts = () => {
-//   return api.get("/posts");
-// };
+export const fetchPostsData = () => {
+  return api.get("/posts");
+};
 
 
 export const fetchPosts = async (pageNumber) => {
